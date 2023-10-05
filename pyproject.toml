@@ -7,12 +7,25 @@ readme = "README.md"
 packages = [{include = "my_py_project"}]
 
 [tool.poetry.dependencies]
-python = "^3.8"
+python = ">=3.8,<3.11"
 
 
 [tool.poetry.group.dev.dependencies]
 pytest = "^7.4.2"
+pre-commit = "^3.4.0"
 
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
+
+[tool.black]
+target-version = ["py37", "py38", "py39", "py310"]
+line-length = 120
+
+[tool.flake8]
+max-line-length = 120
+ignore = "E203"
+
+[tool.isort]
+profile = "black"
+line_length = 120
