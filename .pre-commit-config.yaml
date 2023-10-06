@@ -3,19 +3,30 @@ repos:
   rev: 5.11.5
   hooks:
   - id: isort
+    stages: [pre-commit]
 - repo: https://github.com/psf/black-pre-commit-mirror
   rev: 23.9.1
   hooks:
   - id: black
     language_version: python3.10
+    stages: [pre-commit]
 - repo: https://github.com/pycqa/flake8
   rev: 6.0.0
   hooks:
   - id: flake8
     additional_dependencies: [Flake8-pyproject]  # Use extension to locate flake8-config in pyproject.toml
+    stages: [pre-commit]
+- repo: local
+  hooks:
+  - id: custom-commit-msg
+    stages: [prepare-commit-msg]
+    name: "Apply conventional commit constraints to default revert message"
+    entry: ./scripts/convco_for_reverts.sh
+    language: system
+    types: [text]
 - repo: https://github.com/compilerla/conventional-pre-commit
   rev: v2.4.0
   hooks:
   - id: conventional-pre-commit
-    stages: [prepare-commit-msg]
+    stages: [commit-msg]
     args: [feat, fix, ci, chore, test, refactor, debug, docs, perf, revert]
