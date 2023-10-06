@@ -13,3 +13,9 @@ repos:
   hooks:
   - id: flake8
     additional_dependencies: [Flake8-pyproject]  # Use extension to locate flake8-config in pyproject.toml
+- repo: https://github.com/compilerla/conventional-pre-commit
+  rev: v2.4.0
+  hooks:
+  - id: conventional-pre-commit
+    stages: [prepare-commit-msg]
+    args: [feat, fix, ci, chore, test, refactor, debug, docs, perf, revert]
