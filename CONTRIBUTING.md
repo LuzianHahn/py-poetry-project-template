@@ -6,7 +6,7 @@ Before contributing anything, please ensure to set up the git hooks in your loca
 You can do so by running 
 ```shell
 poetry install 
-pre-commit install --hook-type pre-commit --hook-type prepare-commit-msg --hook-type commit-msg
+pre-commit install
 ```
 in the root of this project. 
 > Ensure that you have a poetry setup in place.
